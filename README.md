@@ -30,12 +30,10 @@ Since I'm more familiar with VueJS, I picked it as my go-to tool for creating in
 
 Next came the baseline functionality, which after some trial and error finally started working together. Leaning heavily on VueJS documentation and examples, I've been able to create a basic app flow, storing data in VM temporarily.
 
-After the main look and feel was done, I used API data to provide some dynamic functionality in a form of "donate" action. There's currently no inline error validation, but it definitely should be added, but you cannot submit an empty value.
+After the main look and feel was done, I used API data to provide some dynamic functionality in a form of "donate" action. There's currently no inline error validation, but it definitely should be added, though you cannot submit an empty value.
 
-Currently, the click method doesn't do anythign apart from changing component state from `default` to `success`, but in reality it would display a progress indicator for submitting data over AJAX and work some API magic to process the payment, etc.
+Currently, the click method doesn't do anything apart from changing component state from `default` to `success`, but in reality it would display a progress indicator for submitting data over AJAX and work some API magic to process the payment, etc.
 
-Component states use simple CSS keyframe aminations (via transforms) to createa card flip effect.
-
-Since I'm generally pretty conscious about the quality of my code, I didn't have too much to clean or refactor to make the app work reliably and perform decently in poor network conditions.
+Component states use simple CSS keyframe animations (via transforms) to create a card flip effect.
 
 The component isn't fully-responsive and I relied on the provided UI kit from Co-op, though I still had to create most of the card/panel styles myself.
