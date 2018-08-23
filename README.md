@@ -1,4 +1,4 @@
-# coop-component-test3
+# coop-component-test
 
 > Donation Component Test in VueJS
 
