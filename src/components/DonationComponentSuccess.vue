@@ -2,7 +2,7 @@
   <article class="panel">
     <div class="panel__content">
       <h2>Thank you for your donation!</h2>
-      <p>You donated <strong>&pound;{{ amount }}</strong> to <strong>Manchester Refugee Support Network (MRSN)</strong>.</p>
+      <p>You donated <strong>&pound;{{ amount }}</strong> to <strong>{{ name }}</strong>.</p>
     </div>
 
     <footer class="panel__footer">
@@ -14,7 +14,7 @@
 <script>
 export default {
   name: 'DonationComponentSuccess',
-  props: ['amount']
+  props: ['amount', 'name']
 };
 </script>
 

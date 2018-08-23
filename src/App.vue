@@ -3,7 +3,7 @@
     <div class="app__wrapper">
       <h1>Co-op Donate Component Test</h1>
       <transition name="flip" mode="out-in">
-        <component :is="view" @click="donationProcess" :amount="donationAmount"></component>
+        <component :is="view" @click="donationProcess" :amount="donationAmount" :name="receipient"></component>
       </transition>
     </div>
   </div>
@@ -22,7 +22,8 @@ export default {
   data: function () {
     return {
       view: 'default',
-      donationAmount: null
+      donationAmount: null,
+      receipient: 'Manchester Refugee Support Network (MRSN)'
     };
   },
   methods: {

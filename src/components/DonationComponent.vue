@@ -2,7 +2,7 @@
   <article class="panel">
     <header class="panel__header">
       <h3>Help refugees rebuild their lives and communities in Manchester</h3>
-      <p class="panel__subtitle">Manchester Refugee Support Network (MRSN)</p>
+      <p class="panel__subtitle">{{ name }}</p>
     </header>
 
     <div class="panel__content">
@@ -52,6 +52,7 @@ export default {
       errors: []
     };
   },
+  props: ['name'],
   computed: {
     targetAmount: function () {
       var _self = this;
