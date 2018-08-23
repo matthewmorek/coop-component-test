@@ -1,6 +1,9 @@
 <template>
   <div id="app">
-    <DonationComponent msg="Sample text"/>
+    <div class="app__wrapper">
+      <h1>Co-op Donate Component Test</h1>
+        <component :is="view" @click="donationProcess" :amount="donationAmount"></component>
+    </div>
   </div>
 </template>
 
@@ -15,4 +18,12 @@ export default {
 };
 </script>
 
-<style lang="scss"></style>
+<style lang="scss">
+  .app__wrapper {
+    max-width: 24em;
+    margin-left: auto;
+    margin-right: auto;
+    margin-top: 2em;
+    margin-bottom: 2em;
+  }
+</style>
