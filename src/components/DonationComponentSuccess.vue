@@ -33,7 +33,7 @@ export default {
     text-align: center;
     padding-bottom: 2rem;
     padding-top: 2rem;
-    
+
     h2 {
       line-height: 1.4;
       margin-bottom: 1.5rem;

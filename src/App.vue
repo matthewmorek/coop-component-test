@@ -53,15 +53,15 @@ export default {
     0% {
       transform: perspective(400px) rotateX(90deg);
     }
-    
+
     40% {
       transform: perspective(400px) rotateX(-10deg);
     }
-    
+
     70% {
       transform: perspective(400px) rotateX(5deg);
     }
-    
+
     100% {
       transform: perspective(400px) rotateX(0deg);
     }
