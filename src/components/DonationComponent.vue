@@ -21,6 +21,17 @@
           <h3>&pound;{{ targetAmount }}</h3>
         </div>
       </div>
+
+      <div class="donate row collapse">
+        <div class="donate__amount column all-8">
+          <label for="donation-amount" class="label__small">Donate to this project</label>
+          <span class="donate__amount--currency">&pound;</span>
+          <input type="number" name="donation-amount" id="donation-amount" class="donate__amount--input" v-on:keypress="isNumber" v-model="amount">
+        </div>
+        <div class="donate__cta column all-4">
+          <button class="btn btn__tight" @click="btnClick">Donate</button>
+        </div>
+      </div>
     </div>
 
     <footer class="panel__footer">
@@ -42,6 +53,23 @@ export default {
     };
   },
   computed: {
+    targetAmount: function () {
+      var _self = this;
+      var val = (_self.target / 1).toFixed(0).replace('.', ',');
+      return val.toString().replace(/\B(?=(\d{3})+(?!\d))/g, ',');
+    },
+    raisedAmount: function () {
+      // this method is similar to the one above, but because of the required
+      // visual representation it works the periods and the commas a bit differently...
+      var _self = this;
+      var val = (_self.raised / 1).toFixed(2).replace(',', '.');
+      return val.toString().replace(/\B(?=(\d{3})+(?!\d))/g, ',');
+    },
+    donationAmount: function () {
+      var _self = this;
+      var val = (_self.amount / 1).toFixed(2).replace(',', '.');
+      return val.toString().replace(/\B(?=(\d{3})+(?!\d))/g, ',');
+    },
     progress: function () {
       var _self = this;
       return Math.floor(_self.raised / _self.target * 100);
@@ -65,6 +93,25 @@ export default {
         _self.raised = json.raised;
       }
     });
+  },
+  methods: {
+    isNumber: function (evt) {
+      evt = (evt) ? evt : window.event;
+      var charCode = (evt.which) ? evt.which : evt.keyCode;
+      // kinda long-ish check for key codes
+      if ((charCode > 31 && (charCode < 48 || charCode > 57)) && charCode !== 46 && charCode !== 37 && charCode !== 38 && charCode !== 39 && charCode !== 40) {
+        evt.preventDefault();
+      } else {
+        return true;
+      }
+    },
+    btnClick: function () {
+      var _self = this;
+
+      if (_self.amount > 0) {
+        _self.$emit('click', { amount: _self.donationAmount });
+      }
+    }
   }
 };
 </script>
@@ -129,9 +176,42 @@ export default {
     margin-bottom: -1rem;
     margin-top: 1.75rem;
   }
+
+  .donate {
+    padding-left: 1rem;
+    padding-right: 1rem;
+
+    &__amount {
+      position: relative;
+
+      &--currency {
+        display: inline-block;
+        position: absolute;
+        padding: 12px 8px;
+        cursor: default;
+        font-weight: bold;
+      }
+
+      &--input {
+        -moz-appearance: textfield;
+        padding-left: 24px;
+
+        &::-webkit-outer-spin-button,
+        &::-webkit-inner-spin-button {
+          -webkit-appearance: none;
+          margin: 0;
+        }
+      }
+    }
+  }
+
   .column {
     &.donate__amount {
       padding-right: 0.5rem;
     }
+  }
+
+  .donate__cta {
+    padding-top: 34px;
   }
 </style>
